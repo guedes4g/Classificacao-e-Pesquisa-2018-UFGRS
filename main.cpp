@@ -1,9 +1,26 @@
 #include <iostream>
 #include <tensorflow/c/c_api.h>
 
-#include "HashMap.cpp"
 
-int main() {
+#include "BTree.cpp"
+#include "HashMap.cpp"
+void debugHash();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void debugHash(){
     printf("Hello from TensorFlow C library version %s\n", TF_Version());
 
     auto *map = new HashMap<string, unsigned int>(100);
@@ -32,6 +49,4 @@ int main() {
     cout << map->get("asa") << endl;
 
     cout << map->sizeofMap() << endl;
-    printf("END");
-    return 0;
 }

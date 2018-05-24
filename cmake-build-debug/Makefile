@@ -123,6 +123,33 @@ CPD_FINAL/fast:
 	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/build
 .PHONY : CPD_FINAL/fast
 
+BTree.o: BTree.cpp.o
+
+.PHONY : BTree.o
+
+# target to build an object file
+BTree.cpp.o:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/BTree.cpp.o
+.PHONY : BTree.cpp.o
+
+BTree.i: BTree.cpp.i
+
+.PHONY : BTree.i
+
+# target to preprocess a source file
+BTree.cpp.i:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/BTree.cpp.i
+.PHONY : BTree.cpp.i
+
+BTree.s: BTree.cpp.s
+
+.PHONY : BTree.s
+
+# target to generate assembly for a file
+BTree.cpp.s:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/BTree.cpp.s
+.PHONY : BTree.cpp.s
+
 HashMap.o: HashMap.cpp.o
 
 .PHONY : HashMap.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... CPD_FINAL"
+	@echo "... BTree.o"
+	@echo "... BTree.i"
+	@echo "... BTree.s"
 	@echo "... HashMap.o"
 	@echo "... HashMap.i"
 	@echo "... HashMap.s"

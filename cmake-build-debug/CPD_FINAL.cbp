@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/BTree.cpp">
+			<Option target="CPD_FINAL"/>
+		</Unit>
 		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp">
 			<Option target="CPD_FINAL"/>
 		</Unit>
