@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp
+bits/stdc++.h
+-
+bits/hash_bytes.h
+-
+
+/home/guedes/CLionProjects/CPD_FINAL/main.cpp
+iostream
+-
+tensorflow/c/c_api.h
+-
+HashMap.cpp
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp
+
