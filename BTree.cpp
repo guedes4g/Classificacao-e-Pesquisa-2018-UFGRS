@@ -2,122 +2,122 @@
 
 using namespace std;
 
+template<typename T>
 class BTreeNode {
-    int *keys;
+
+
+public:
+    T *keys;
     int t;
-    BTreeNode **C;
     int n;
     bool leaf;
 
-public:
+    BTreeNode<T> **C;
 
     BTreeNode(int t1, bool leaf1) {
 
         t = t1;
         leaf = leaf1;
 
-        keys = new int[2 * t - 1];
-        C = new BTreeNode *[2 * t];
+        keys = new T[2 * t - 1];
+        C = new BTreeNode<T> *[2 * t];
 
         n = 0;
     }
 
-    int findKey(int k) {
-        int idx = 0;
-        while (idx < n && keys[idx] < k)
-            ++idx;
-        return idx;
+    int findKey(T k) {
+        int index = 0;
+        while (index < n && keys[index] < k)
+            ++index;
+        return index;
     }
 
-    void remove(int k) {
-        int idx = findKey(k);
+    void remove(T k) {
+        int index = findKey(k);
 
-        if (idx < n && keys[idx] == k) {
+        if (index < n && keys[index] == k) {
             if (leaf)
-                removeFromLeaf(idx);
+                removeFromLeaf(index);
             else
-                removeFromNonLeaf(idx);
+                removeFromNonLeaf(index);
         } else {
             if (leaf) {
                 cout << "The key " << k << " is does not exist in the tree\n";
                 return;
             }
 
-            bool flag = ((idx == n) ? true : false);
+            bool flag = (index == n);
 
-            if (C[idx]->n < t)
-                fill(idx);
+            if (C[index]->n < t)
+                fill(index);
 
-            if (flag && idx > n)
-                C[idx - 1]->remove(k);
+            if (flag && index > n)
+                C[index - 1]->remove(k);
             else
-                C[idx]->remove(k);
+                C[index]->remove(k);
         }
-        return;
     }
 
-    void removeFromLeaf(int idx) {
+    void removeFromLeaf(int index) {
 
-        for (int i = idx + 1; i < n; ++i)
+        for (int i = index + 1; i < n; ++i)
             keys[i - 1] = keys[i];
 
         n--;
     }
 
-    void removeFromNonLeaf(int idx) {
-        int k = keys[idx];
-        if (C[idx]->n >= t) {
-            int pred = getPred(idx);
-            keys[idx] = pred;
-            C[idx]->remove(pred);
-        } else if (C[idx + 1]->n >= t) {
-            int succ = getSucc(idx);
-            keys[idx] = succ;
-            C[idx + 1]->remove(succ);
+    void removeFromNonLeaf(int index) {
+        T k = keys[index];
+        if (C[index]->n >= t) {
+            T pred = getPred(index);
+            keys[index] = pred;
+            C[index]->remove(pred);
+        } else if (C[index + 1]->n >= t) {
+            T succ = getSucc(index);
+            keys[index] = succ;
+            C[index + 1]->remove(succ);
         } else {
-            merge(idx);
-            C[idx]->remove(k);
+            merge(index);
+            C[index]->remove(k);
         }
-        return;
     }
 
-    int getPred(int idx) {
+    T getPred(int index) {
 
-        BTreeNode *cur = C[idx];
+        BTreeNode<T> *cur = C[index];
         while (!cur->leaf)
             cur = cur->C[cur->n];
 
         return cur->keys[cur->n - 1];
     }
 
-    int getSucc(int idx) {
-        BTreeNode *cur = C[idx + 1];
+    T getSucc(int index) {
+        BTreeNode<T> *cur = C[index + 1];
         while (!cur->leaf)
             cur = cur->C[0];
 
         return cur->keys[0];
     }
 
-    void fill(int idx) {
-        if (idx != 0 && C[idx - 1]->n >= t)
-            borrowFromPrev(idx);
+    void fill(int index) {
+        if (index != 0 && C[index - 1]->n >= t)
+            borrowFromPrev(index);
 
-        else if (idx != n && C[idx + 1]->n >= t)
-            borrowFromNext(idx);
+        else if (index != n && C[index + 1]->n >= t)
+            borrowFromNext(index);
 
         else {
-            if (idx != n)
-                merge(idx);
+            if (index != n)
+                merge(index);
             else
-                merge(idx - 1);
+                merge(index - 1);
         }
-        return;
     }
 
-    void borrowFromPrev(int idx) {
+    void borrowFromPrev(int index) {
 
-        BTreeNode *child = C[idx];
-        BTreeNode *sibling = C[idx - 1];
+        BTreeNode<T> *child = C[index];
+        BTreeNode<T> *sibling = C[index - 1];
 
         for (int i = child->n - 1; i >= 0; --i)
             child->keys[i + 1] = child->keys[i];
@@ -128,29 +128,27 @@ public:
         }
 
 
-        child->keys[0] = keys[idx - 1];
+        child->keys[0] = keys[index - 1];
 
         if (!leaf)
             child->C[0] = sibling->C[sibling->n];
 
-        keys[idx - 1] = sibling->keys[sibling->n - 1];
+        keys[index - 1] = sibling->keys[sibling->n - 1];
 
         child->n += 1;
         sibling->n -= 1;
-
-        return;
     }
 
-    void borrowFromNext(int idx) {
+    void borrowFromNext(int index) {
 
-        BTreeNode *child = C[idx];
-        BTreeNode *sibling = C[idx + 1];
+        BTreeNode<T> *child = C[index];
+        BTreeNode<T> *sibling = C[index + 1];
 
-        child->keys[(child->n)] = keys[idx];
+        child->keys[(child->n)] = keys[index];
         if (!(child->leaf))
             child->C[(child->n) + 1] = sibling->C[0];
 
-        keys[idx] = sibling->keys[0];
+        keys[index] = sibling->keys[0];
 
         for (int i = 1; i < sibling->n; ++i)
             sibling->keys[i - 1] = sibling->keys[i];
@@ -163,15 +161,13 @@ public:
 
         child->n += 1;
         sibling->n -= 1;
-
-        return;
     }
 
-    void merge(int idx) {
-        BTreeNode *child = C[idx];
-        BTreeNode *sibling = C[idx + 1];
+    void merge(int index) {
+        BTreeNode<T> *child = C[index];
+        BTreeNode<T> *sibling = C[index + 1];
 
-        child->keys[t - 1] = keys[idx];
+        child->keys[t - 1] = keys[index];
 
         for (int i = 0; i < sibling->n; ++i)
             child->keys[i + t] = sibling->keys[i];
@@ -182,11 +178,11 @@ public:
                 child->C[i + t] = sibling->C[i];
         }
 
-        for (int i = idx + 1; i < n; ++i)
+        for (int i = index + 1; i < n; ++i)
             keys[i - 1] = keys[i];
 
 
-        for (int i = idx + 2; i <= n; ++i)
+        for (int i = index + 2; i <= n; ++i)
             C[i - 1] = C[i];
 
         child->n += sibling->n + 1;
@@ -194,13 +190,12 @@ public:
 
 
         delete (sibling);
-        return;
     }
 
-    void insertNonFull(int k) {
+    void insertNonFull(T k) {
 
         int i = n - 1;
-        if (leaf == true) {
+        if (leaf) {
             while (i >= 0 && keys[i] > k) {
                 keys[i + 1] = keys[i];
                 i--;
@@ -220,13 +215,13 @@ public:
         }
     }
 
-    void splitChild(int i, BTreeNode *y) {
-        BTreeNode *z = new BTreeNode(y->t, y->leaf);
+    void splitChild(int i, BTreeNode<T> *y) {
+        auto *z = new BTreeNode<T>(y->t, y->leaf);
         z->n = t - 1;
         for (int j = 0; j < t - 1; j++)
             z->keys[j] = y->keys[j + t];
 
-        if (y->leaf == false) {
+        if (!y->leaf) {
             for (int j = 0; j < t; j++)
                 z->C[j] = y->C[j + t];
         }
@@ -248,15 +243,15 @@ public:
     void traverse() {
         int i;
         for (i = 0; i < n; i++) {
-            if (leaf == false)
+            if (!leaf)
                 C[i]->traverse();
             cout << " " << keys[i];
         }
-        if (leaf == false)
+        if (!leaf)
             C[i]->traverse();
     }
 
-    BTreeNode *search(int k) {
+    BTreeNode<T> *search(T k) {
         int i = 0;
         while (i < n && k > keys[i])
             i++;
@@ -264,44 +259,45 @@ public:
         if (keys[i] == k)
             return this;
 
-        if (leaf == true)
+        if (leaf)
             return NULL;
 
         return C[i]->search(k);
     }
 
-    friend class BTree;
 };
 
+
+template<typename T>
 class BTree {
-    BTreeNode *root;
+    BTreeNode<T> *root;
     int t;
 public:
-    BTree(int _t) {
-        root = NULL;
+    explicit BTree(int _t) {
+        root = nullptr;
         t = _t;
     }
 
     void traverse() {
-        if (root != NULL) root->traverse();
+        if (root != nullptr) root->traverse();
     }
 
 
-    BTreeNode *search(int k) {
-        return (root == NULL) ? NULL : root->search(k);
+    BTreeNode<T> *search(T k) {
+        return (root == nullptr) ? nullptr : root->search(k);
     }
 
-    void insert(int k) {
+    void insert(T k) {
 
-        if (root == NULL) {
+        if (root == nullptr) {
 
-            root = new BTreeNode(t, true);
+            this->root = new BTreeNode<T>(t, true);
             root->keys[0] = k;
             root->n = 1;
         } else {
 
             if (root->n == 2 * t - 1) {
-                BTreeNode *s = new BTreeNode(t, false);
+                auto *s = new BTreeNode<T>(t, false);
                 s->C[0] = root;
                 s->splitChild(0, root);
                 int i = 0;
@@ -314,83 +310,89 @@ public:
         }
     }
 
-    void remove(int k) {
+    void remove(T k) {
         if (!root) {
             cout << "The tree is empty\n";
             return;
         }
         root->remove(k);
         if (root->n == 0) {
-            BTreeNode *tmp = root;
+            BTreeNode<T> *tmp = root;
             if (root->leaf)
-                root = NULL;
+                root = nullptr;
             else
                 root = root->C[0];
             delete tmp;
         }
-    }};
+    }
+};
 
 
 int main() {
-    auto t = *new BTree(3);
+    auto t = *new BTree<string>(3);
 
-    t.insert(1);
-    t.insert(3);
-    t.insert(7);
-    t.insert(10);
-    t.insert(11);
-    t.insert(13);
-    t.insert(14);
-    t.insert(15);
-    t.insert(18);
-    t.insert(16);
-    t.insert(19);
-    t.insert(24);
-    t.insert(25);
-    t.insert(26);
-    t.insert(21);
-    t.insert(4);
-    t.insert(5);
-    t.insert(20);
-    t.insert(22);
-    t.insert(2);
-    t.insert(17);
-    t.insert(12);
-    t.insert(6);
 
-    cout << "Traversal of tree constructed is\n";
-    t.traverse();
-    cout << endl;
+    t.insert("A");
+    t.insert("Ab");
+    t.insert("Ac");
+    t.insert("Av");
+    t.insert("Ab");
+    t.insert("Ab");
+    t.insert("Af");
+    t.insert("Aff");
+    t.insert("Ag");
+    t.insert("Ah");
+    t.insert("Ah");
+    t.insert("As");
+    t.insert("As");
+    t.insert("Add");
+    t.insert("Afsfs");
+    t.insert("Afs");
+    t.insert("Agdg");
+    t.insert("Agd");
+    t.insert("Adsd");
+    t.insert("Afs");
+    t.insert("Agdgd");
+    t.insert("Aere");
+    t.insert("Z");
 
-    t.remove(6);
-    cout << "Traversal of tree after removing 6\n";
-    t.traverse();
-    cout << endl;
+    auto found = *t.search("Z");
 
-    t.remove(13);
-    cout << "Traversal of tree after removing 13\n";
-    t.traverse();
-    cout << endl;
+    cout << found.findKey("Z") << endl;
 
-    t.remove(7);
-    cout << "Traversal of tree after removing 7\n";
-    t.traverse();
-    cout << endl;
-
-    t.remove(4);
-    cout << "Traversal of tree after removing 4\n";
-    t.traverse();
-    cout << endl;
-
-    t.remove(2);
-    cout << "Traversal of tree after removing 2\n";
-    t.traverse();
-    cout << endl;
-
-    t.remove(16);
-    cout << "Traversal of tree after removing 16\n";
-    t.traverse();
-    cout << endl;
+//    cout << "Traversal of tree constructed is\n";
+//    t.traverse();
+//    cout << endl;
+//
+//    t.remove("A");
+//    cout << "Traversal of tree after removing A\n";
+//    t.traverse();
+//    cout << endl;
+//
+//    t.remove("Af");
+//    cout << "Traversal of tree after removing Af\n";
+//    t.traverse();
+//    cout << endl;
+//
+//    t.remove("Afsfs");
+//    cout << "Traversal of tree after removing Afsfs\n";
+//    t.traverse();
+//    cout << endl;
+//
+//    t.remove("Agdgd");
+//    cout << "Traversal of tree after removing Agdgd\n";
+//    t.traverse();
+//    cout << endl;
+//
+//    t.remove("Aere");
+//    cout << "Traversal of tree after removing Aere\n";
+//    t.traverse();
+//    cout << endl;
+//
+//    t.remove("Z");
+//    cout << "Traversal of tree after removing Z\n";
+//    t.traverse();
+//    cout << endl;
 
     return 0;
 }
