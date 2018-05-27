@@ -14,24 +14,29 @@ Node<K, V>::Node(K key, V value) {
 
 
 template<typename K, typename V>
-unsigned int HashMap<K, V>::hashCode(K object) {
-    std::array< byte, sizeof(K) > bytes ;
+unsigned int HashMap<K, V>::hashCode(const string &s)
+{
+    const char * str = s.c_str();
+    auto length = static_cast<unsigned int>(s.size());
+    unsigned int hash = 0xAAAAAAAA;
+    unsigned int i    = 0;
 
-    const byte* begin = reinterpret_cast< const byte* >( std::addressof(object) ) ;
-    const byte* end = begin + sizeof(K) ;
-    std::copy( begin, end, std::begin(bytes) ) ;
-    unsigned int sum = 7, v = 3, i = 1;
-    for( byte b : bytes ){
-        sum += v*(unsigned int)b;
-
+    for (i = 0; i < length; ++str, ++i)
+    {
+        if ((i & 1) == 0) {
+            hash ^= (hash << 7) ^ (*str) * (hash >> 3);
+        } else {
+            hash ^= ~((hash << 11) + ((*str) ^ (hash >> 5)));
+        }
     }
-    return (sum % this->capacity) ;
+
+    return hash % this->capacity;
 }
+
 
 template<typename K, typename V>
 bool HashMap<K, V>::insertNode(K key, V value) {
     unsigned int hashIndex = hashCode( key );
-    cout << "Key = "<< key << "  ,Hash = " << hashIndex << endl;
     for(int i = 0; i < arr[hashIndex].size(); i++)
         if (arr[hashIndex][i].key == key) return false;
 

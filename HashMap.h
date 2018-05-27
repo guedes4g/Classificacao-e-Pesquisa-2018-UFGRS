@@ -4,7 +4,9 @@
 
 #ifndef CPD_FINAL_HASHMAP_H
 #include <vector>
+#include <string>
 
+using namespace std;
 template<typename K, typename V>
 class Node {
 public:
@@ -16,15 +18,16 @@ public:
 
 template<typename K, typename V>
 class HashMap {
+
+public:
     std::vector<Node<K, V>> *arr;
     unsigned int capacity;
     unsigned int size;
 
-public:
     explicit HashMap(unsigned int capacity);
 
     unsigned int
-    hashCode( K object );
+    hashCode(const string &s);
 
     bool insertNode(K key, V value);
 

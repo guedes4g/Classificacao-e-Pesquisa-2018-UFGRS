@@ -5,17 +5,21 @@
 #include "Helper.cpp"
 #include "BTree.cpp"
 #include "HashMap.cpp"
+#include "WordAvg.h"
 //void debugHash();
 
 using namespace std;
 
-//int main(){
-//    vector<WordInfo* > raw =  Helper::readFile();
-//
-//
-//    return 0;
-//}
+void strategyOne(){
+    vector<WordInfo* > raw =  Helper::readFile();
+    HashMap<string, WordAvg> map = Helper::generateHashWordAvg(raw);
+}
 
+int main(){
+    strategyOne();
+
+    return 0;
+}
 
 
 //void debugHash(){

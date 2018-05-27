@@ -9,11 +9,23 @@
 /home/guedes/CLionProjects/CPD_FINAL/BTree.cpp
 iostream
 -
+BTree.h
+/home/guedes/CLionProjects/CPD_FINAL/BTree.h
+
+/home/guedes/CLionProjects/CPD_FINAL/BTree.h
 
 /home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp
 bits/stdc++.h
 -
 bits/hash_bytes.h
+-
+HashMap.h
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.h
+
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.h
+vector
+-
+string
 -
 
 /home/guedes/CLionProjects/CPD_FINAL/Helper.cpp
@@ -29,6 +41,10 @@ string
 -
 WordInfo.cpp
 /home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp
+WordAvg.h
+/home/guedes/CLionProjects/CPD_FINAL/WordAvg.h
+HashMap.h
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.h
 
 /home/guedes/CLionProjects/CPD_FINAL/Trie.cpp
 HashMap.cpp
@@ -37,6 +53,16 @@ Trie.h
 /home/guedes/CLionProjects/CPD_FINAL/Trie.h
 
 /home/guedes/CLionProjects/CPD_FINAL/Trie.h
+
+/home/guedes/CLionProjects/CPD_FINAL/WordAvg.cpp
+WordAvg.h
+/home/guedes/CLionProjects/CPD_FINAL/WordAvg.h
+
+/home/guedes/CLionProjects/CPD_FINAL/WordAvg.h
+string
+-
+vector
+-
 
 /home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp
 string
@@ -61,4 +87,6 @@ BTree.cpp
 /home/guedes/CLionProjects/CPD_FINAL/BTree.cpp
 HashMap.cpp
 /home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp
+WordAvg.h
+/home/guedes/CLionProjects/CPD_FINAL/WordAvg.h
 
