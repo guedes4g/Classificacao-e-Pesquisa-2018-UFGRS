@@ -177,6 +177,87 @@ HashMap.cpp.s:
 	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/HashMap.cpp.s
 .PHONY : HashMap.cpp.s
 
+Helper.o: Helper.cpp.o
+
+.PHONY : Helper.o
+
+# target to build an object file
+Helper.cpp.o:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Helper.cpp.o
+.PHONY : Helper.cpp.o
+
+Helper.i: Helper.cpp.i
+
+.PHONY : Helper.i
+
+# target to preprocess a source file
+Helper.cpp.i:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Helper.cpp.i
+.PHONY : Helper.cpp.i
+
+Helper.s: Helper.cpp.s
+
+.PHONY : Helper.s
+
+# target to generate assembly for a file
+Helper.cpp.s:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Helper.cpp.s
+.PHONY : Helper.cpp.s
+
+Trie.o: Trie.cpp.o
+
+.PHONY : Trie.o
+
+# target to build an object file
+Trie.cpp.o:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Trie.cpp.o
+.PHONY : Trie.cpp.o
+
+Trie.i: Trie.cpp.i
+
+.PHONY : Trie.i
+
+# target to preprocess a source file
+Trie.cpp.i:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Trie.cpp.i
+.PHONY : Trie.cpp.i
+
+Trie.s: Trie.cpp.s
+
+.PHONY : Trie.s
+
+# target to generate assembly for a file
+Trie.cpp.s:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Trie.cpp.s
+.PHONY : Trie.cpp.s
+
+WordInfo.o: WordInfo.cpp.o
+
+.PHONY : WordInfo.o
+
+# target to build an object file
+WordInfo.cpp.o:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o
+.PHONY : WordInfo.cpp.o
+
+WordInfo.i: WordInfo.cpp.i
+
+.PHONY : WordInfo.i
+
+# target to preprocess a source file
+WordInfo.cpp.i:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.i
+.PHONY : WordInfo.cpp.i
+
+WordInfo.s: WordInfo.cpp.s
+
+.PHONY : WordInfo.s
+
+# target to generate assembly for a file
+WordInfo.cpp.s:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.s
+.PHONY : WordInfo.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -219,6 +300,15 @@ help:
 	@echo "... HashMap.o"
 	@echo "... HashMap.i"
 	@echo "... HashMap.s"
+	@echo "... Helper.o"
+	@echo "... Helper.i"
+	@echo "... Helper.s"
+	@echo "... Trie.o"
+	@echo "... Trie.i"
+	@echo "... Trie.s"
+	@echo "... WordInfo.o"
+	@echo "... WordInfo.i"
+	@echo "... WordInfo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

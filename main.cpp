@@ -1,25 +1,23 @@
-//#include <iostream>
-//#include <tensorflow/c/c_api.h>
-//
-//
-//#include "BTree.cpp"
-//#include "HashMap.cpp"
+#include <iostream>
+#include <tensorflow/c/c_api.h>
+#include <vector>
+
+#include "Helper.cpp"
+#include "BTree.cpp"
+#include "HashMap.cpp"
 //void debugHash();
+
+using namespace std;
+
+//int main(){
+//    vector<WordInfo* > raw =  Helper::readFile();
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+//    return 0;
+//}
+
+
+
 //void debugHash(){
 //    printf("Hello from TensorFlow C library version %s\n", TF_Version());
 //
@@ -31,14 +29,6 @@
 //
 //    map->insertNode("aba",3);    cout << "insert 4" << endl;
 //    map->insertNode("aba",3);    cout << "insert 4" << endl;
-////
-////    map->insertNode("asa",3);    cout << "insert 5" << endl;
-////
-////    map->insertNode("asa",3);    cout << "insert 6" << endl;
-////
-////    map->insertNode("asa",3);    cout << "insert 7" << endl;
-////
-////    map->insertNode("asa",3);    cout << "insert 8" << endl;
 //
 //    map->set("asa",4);
 //    cout << "after set "<< map->get("asa") << endl;

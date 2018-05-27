@@ -5,5 +5,18 @@ CMakeFiles/CPD_FINAL.dir/BTree.cpp.o: ../BTree.cpp
 
 CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o: ../HashMap.cpp
 
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../Helper.cpp
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../WordInfo.cpp
+
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o: ../HashMap.cpp
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o: ../Trie.cpp
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o: ../Trie.h
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o: ../WordInfo.cpp
+
+CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../BTree.cpp
+CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../HashMap.cpp
+CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../Helper.cpp
+CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../WordInfo.cpp
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../main.cpp
 

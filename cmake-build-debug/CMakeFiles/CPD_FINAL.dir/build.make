@@ -81,9 +81,33 @@ CMakeFiles/CPD_FINAL.dir/main.cpp.o.provides: CMakeFiles/CPD_FINAL.dir/main.cpp.
 CMakeFiles/CPD_FINAL.dir/main.cpp.o.provides.build: CMakeFiles/CPD_FINAL.dir/main.cpp.o
 
 
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o: CMakeFiles/CPD_FINAL.dir/flags.make
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o: ../Trie.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CPD_FINAL.dir/Trie.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CPD_FINAL.dir/Trie.cpp.o -c /home/guedes/CLionProjects/CPD_FINAL/Trie.cpp
+
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CPD_FINAL.dir/Trie.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/guedes/CLionProjects/CPD_FINAL/Trie.cpp > CMakeFiles/CPD_FINAL.dir/Trie.cpp.i
+
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CPD_FINAL.dir/Trie.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/guedes/CLionProjects/CPD_FINAL/Trie.cpp -o CMakeFiles/CPD_FINAL.dir/Trie.cpp.s
+
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.requires:
+
+.PHONY : CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.requires
+
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.provides: CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.requires
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.provides.build
+.PHONY : CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.provides
+
+CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.provides.build: CMakeFiles/CPD_FINAL.dir/Trie.cpp.o
+
+
 CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o: CMakeFiles/CPD_FINAL.dir/flags.make
 CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o: ../HashMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o -c /home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp
 
 CMakeFiles/CPD_FINAL.dir/HashMap.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o.provides.build: CMakeFiles/CPD_FINAL.dir/
 
 CMakeFiles/CPD_FINAL.dir/BTree.cpp.o: CMakeFiles/CPD_FINAL.dir/flags.make
 CMakeFiles/CPD_FINAL.dir/BTree.cpp.o: ../BTree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CPD_FINAL.dir/BTree.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CPD_FINAL.dir/BTree.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CPD_FINAL.dir/BTree.cpp.o -c /home/guedes/CLionProjects/CPD_FINAL/BTree.cpp
 
 CMakeFiles/CPD_FINAL.dir/BTree.cpp.i: cmake_force
@@ -129,21 +153,75 @@ CMakeFiles/CPD_FINAL.dir/BTree.cpp.o.provides: CMakeFiles/CPD_FINAL.dir/BTree.cp
 CMakeFiles/CPD_FINAL.dir/BTree.cpp.o.provides.build: CMakeFiles/CPD_FINAL.dir/BTree.cpp.o
 
 
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: CMakeFiles/CPD_FINAL.dir/flags.make
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../Helper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CPD_FINAL.dir/Helper.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CPD_FINAL.dir/Helper.cpp.o -c /home/guedes/CLionProjects/CPD_FINAL/Helper.cpp
+
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CPD_FINAL.dir/Helper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/guedes/CLionProjects/CPD_FINAL/Helper.cpp > CMakeFiles/CPD_FINAL.dir/Helper.cpp.i
+
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CPD_FINAL.dir/Helper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/guedes/CLionProjects/CPD_FINAL/Helper.cpp -o CMakeFiles/CPD_FINAL.dir/Helper.cpp.s
+
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.requires:
+
+.PHONY : CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.requires
+
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.provides: CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.requires
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.provides.build
+.PHONY : CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.provides
+
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.provides.build: CMakeFiles/CPD_FINAL.dir/Helper.cpp.o
+
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o: CMakeFiles/CPD_FINAL.dir/flags.make
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o: ../WordInfo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o -c /home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp > CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.i
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp -o CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.s
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.requires:
+
+.PHONY : CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.requires
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.provides: CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.requires
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.provides.build
+.PHONY : CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.provides
+
+CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.provides.build: CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o
+
+
 # Object files for target CPD_FINAL
 CPD_FINAL_OBJECTS = \
 "CMakeFiles/CPD_FINAL.dir/main.cpp.o" \
+"CMakeFiles/CPD_FINAL.dir/Trie.cpp.o" \
 "CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o" \
-"CMakeFiles/CPD_FINAL.dir/BTree.cpp.o"
+"CMakeFiles/CPD_FINAL.dir/BTree.cpp.o" \
+"CMakeFiles/CPD_FINAL.dir/Helper.cpp.o" \
+"CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o"
 
 # External object files for target CPD_FINAL
 CPD_FINAL_EXTERNAL_OBJECTS =
 
 CPD_FINAL: CMakeFiles/CPD_FINAL.dir/main.cpp.o
+CPD_FINAL: CMakeFiles/CPD_FINAL.dir/Trie.cpp.o
 CPD_FINAL: CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o
 CPD_FINAL: CMakeFiles/CPD_FINAL.dir/BTree.cpp.o
+CPD_FINAL: CMakeFiles/CPD_FINAL.dir/Helper.cpp.o
+CPD_FINAL: CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o
 CPD_FINAL: CMakeFiles/CPD_FINAL.dir/build.make
 CPD_FINAL: CMakeFiles/CPD_FINAL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable CPD_FINAL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/guedes/CLionProjects/CPD_FINAL/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable CPD_FINAL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CPD_FINAL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -152,8 +230,11 @@ CMakeFiles/CPD_FINAL.dir/build: CPD_FINAL
 .PHONY : CMakeFiles/CPD_FINAL.dir/build
 
 CMakeFiles/CPD_FINAL.dir/requires: CMakeFiles/CPD_FINAL.dir/main.cpp.o.requires
+CMakeFiles/CPD_FINAL.dir/requires: CMakeFiles/CPD_FINAL.dir/Trie.cpp.o.requires
 CMakeFiles/CPD_FINAL.dir/requires: CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o.requires
 CMakeFiles/CPD_FINAL.dir/requires: CMakeFiles/CPD_FINAL.dir/BTree.cpp.o.requires
+CMakeFiles/CPD_FINAL.dir/requires: CMakeFiles/CPD_FINAL.dir/Helper.cpp.o.requires
+CMakeFiles/CPD_FINAL.dir/requires: CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o.requires
 
 .PHONY : CMakeFiles/CPD_FINAL.dir/requires
 

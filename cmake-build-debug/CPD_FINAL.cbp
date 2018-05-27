@@ -87,7 +87,25 @@
 		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/BTree.cpp">
 			<Option target="CPD_FINAL"/>
 		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/BTree.h">
+			<Option target="CPD_FINAL"/>
+		</Unit>
 		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp">
+			<Option target="CPD_FINAL"/>
+		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/HashMap.h">
+			<Option target="CPD_FINAL"/>
+		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/Helper.cpp">
+			<Option target="CPD_FINAL"/>
+		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/Trie.cpp">
+			<Option target="CPD_FINAL"/>
+		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/Trie.h">
+			<Option target="CPD_FINAL"/>
+		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp">
 			<Option target="CPD_FINAL"/>
 		</Unit>
 		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/main.cpp">
