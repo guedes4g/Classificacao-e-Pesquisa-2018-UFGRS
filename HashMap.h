@@ -16,11 +16,12 @@ public:
 
 template<typename K, typename V>
 class HashMap {
+
+public:
     std::vector<Node<K, V>> *arr;
     unsigned int capacity;
     unsigned int size;
 
-public:
     explicit HashMap(unsigned int capacity);
 
     unsigned int

@@ -231,6 +231,33 @@ Trie.cpp.s:
 	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/Trie.cpp.s
 .PHONY : Trie.cpp.s
 
+WordAvg.o: WordAvg.cpp.o
+
+.PHONY : WordAvg.o
+
+# target to build an object file
+WordAvg.cpp.o:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.o
+.PHONY : WordAvg.cpp.o
+
+WordAvg.i: WordAvg.cpp.i
+
+.PHONY : WordAvg.i
+
+# target to preprocess a source file
+WordAvg.cpp.i:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.i
+.PHONY : WordAvg.cpp.i
+
+WordAvg.s: WordAvg.cpp.s
+
+.PHONY : WordAvg.s
+
+# target to generate assembly for a file
+WordAvg.cpp.s:
+	$(MAKE) -f CMakeFiles/CPD_FINAL.dir/build.make CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.s
+.PHONY : WordAvg.cpp.s
+
 WordInfo.o: WordInfo.cpp.o
 
 .PHONY : WordInfo.o
@@ -306,6 +333,9 @@ help:
 	@echo "... Trie.o"
 	@echo "... Trie.i"
 	@echo "... Trie.s"
+	@echo "... WordAvg.o"
+	@echo "... WordAvg.i"
+	@echo "... WordAvg.s"
 	@echo "... WordInfo.o"
 	@echo "... WordInfo.i"
 	@echo "... WordInfo.s"

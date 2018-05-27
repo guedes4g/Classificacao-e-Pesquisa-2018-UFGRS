@@ -9,12 +9,12 @@
 
 using namespace std;
 
-//int main(){
-//    vector<WordInfo* > raw =  Helper::readFile();
-//
-//
-//    return 0;
-//}
+int main(){
+    vector<WordInfo* > raw =  Helper::readFile();
+
+
+    return 0;
+}
 
 
 

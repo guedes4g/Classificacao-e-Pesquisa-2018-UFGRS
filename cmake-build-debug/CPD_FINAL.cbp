@@ -105,6 +105,12 @@
 		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/Trie.h">
 			<Option target="CPD_FINAL"/>
 		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/WordAvg.cpp">
+			<Option target="CPD_FINAL"/>
+		</Unit>
+		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/WordAvg.h">
+			<Option target="CPD_FINAL"/>
+		</Unit>
 		<Unit filename="/home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp">
 			<Option target="CPD_FINAL"/>
 		</Unit>

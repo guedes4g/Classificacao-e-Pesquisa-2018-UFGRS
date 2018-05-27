@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/CPD_FINAL.dir/Trie.cpp.o"
   "CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o"
   "CMakeFiles/CPD_FINAL.dir/BTree.cpp.o"
+  "CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.o"
   "CMakeFiles/CPD_FINAL.dir/Helper.cpp.o"
   "CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o"
   "CPD_FINAL.pdb"
