@@ -25,6 +25,11 @@ HashMap.h
 /home/guedes/CLionProjects/CPD_FINAL/HashMap.h
 vector
 -
+<<<<<<< Updated upstream
+=======
+string
+-
+>>>>>>> Stashed changes
 
 /home/guedes/CLionProjects/CPD_FINAL/Helper.cpp
 vector
@@ -39,6 +44,10 @@ string
 -
 WordInfo.cpp
 /home/guedes/CLionProjects/CPD_FINAL/WordInfo.cpp
+WordAvg.h
+/home/guedes/CLionProjects/CPD_FINAL/WordAvg.h
+HashMap.h
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.h
 
 /home/guedes/CLionProjects/CPD_FINAL/Trie.cpp
 HashMap.cpp
@@ -77,8 +86,8 @@ vector
 -
 Helper.cpp
 /home/guedes/CLionProjects/CPD_FINAL/Helper.cpp
-BTree.cpp
-/home/guedes/CLionProjects/CPD_FINAL/BTree.cpp
-HashMap.cpp
-/home/guedes/CLionProjects/CPD_FINAL/HashMap.cpp
+BTree.h
+/home/guedes/CLionProjects/CPD_FINAL/BTree.h
+HashMap.h
+/home/guedes/CLionProjects/CPD_FINAL/HashMap.h
 

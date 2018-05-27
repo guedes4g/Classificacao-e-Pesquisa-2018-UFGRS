@@ -9,6 +9,8 @@
 #include <string>
 
 #include "WordInfo.cpp"
+#include "WordAvg.h"
+#include "HashMap.h"
 
 using namespace std;
 
@@ -39,6 +41,21 @@ public:
         }
         return output;
     }
+
+
+    HashMap<string, WordAvg> static generateHashWordAvg(vector<WordInfo*> &vec){
+        HashMap<string, WordAvg *> * map = new HashMap<string, WordAvg *>(335941);
+        for(WordInfo * info: vec){
+            for(string word : info->getWords()){
+                if(!map->insertNode(word, new WordAvg(word, info->getSentiment()))){
+                    cout<< "\t HERE"<< endl;
+                    WordAvg * p  = map->get(word);
+                    cout << "===> debug " << p->word << endl;
+                    p->add(info->getSentiment());
+                }
+            }
+        }
+    };
 };
 
 

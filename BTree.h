@@ -46,6 +46,24 @@ public:
     BTreeNode<T> *search(T k);
 
 };
+
+
+template<typename T>
+class BTree {
+    BTreeNode<T> *root;
+    int t;
+public:
+    explicit BTree(int _t);
+
+    void traverse();
+
+    BTreeNode<T> *search(T k);
+
+    void insert(T k);
+
+    void remove(T k);
+};
+
 #define CPD_FINAL_BTREE_H
 
 #endif //CPD_FINAL_BTREE_H

@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.o"
   "CMakeFiles/CPD_FINAL.dir/Helper.cpp.o"
   "CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o"
+  "CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.o"
   "CPD_FINAL.pdb"
   "CPD_FINAL"
 )

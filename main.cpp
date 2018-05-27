@@ -3,20 +3,25 @@
 #include <vector>
 
 #include "Helper.cpp"
-#include "BTree.cpp"
-#include "HashMap.cpp"
-//void debugHash();
+#include "BTree.h"
+#include "HashMap.h"
 
 using namespace std;
 
-int main(){
+void strategyOne(){
     vector<WordInfo* > raw =  Helper::readFile();
+    HashMap<string, WordAvg> map = Helper::generateHashWordAvg(raw);
 
+}
 
     return 0;
 }
 
+int main(){
+    strategyOne();
 
+    return 0;
+}
 
 //void debugHash(){
 //    printf("Hello from TensorFlow C library version %s\n", TF_Version());

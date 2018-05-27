@@ -270,64 +270,65 @@ BTreeNode<T> *BTreeNode<T>::search(T k) {
 }
 
 
+
+//BTREE
+
 template<typename T>
-class BTree {
-    BTreeNode<T> *root;
-    int t;
-public:
-    explicit BTree(int _t) {
-        root = nullptr;
-        t = _t;
+BTree<T>::BTree(int _t) {
+    root = nullptr;
+    t = _t;
+}
+
+template<typename T>
+void BTree<T>::traverse() {
+    if (root != nullptr) root->traverse();
+}
+
+template<typename T>
+BTreeNode<T> *BTree<T>::search(T k) {
+    return (root == nullptr) ? nullptr : root->search(k);
+}
+
+template<typename T>
+void BTree<T>::insert(T k) {
+
+    if (root == nullptr) {
+
+        this->root = new BTreeNode<T>(t, true);
+        root->keys[0] = k;
+        root->n = 1;
+    } else {
+
+        if (root->n == 2 * t - 1) {
+            auto *s = new BTreeNode<T>(t, false);
+            s->C[0] = root;
+            s->splitChild(0, root);
+            int i = 0;
+            if (s->keys[0] < k)
+                i++;
+            s->C[i]->insertNonFull(k);
+            root = s;
+        } else
+            root->insertNonFull(k);
     }
+}
 
-    void traverse() {
-        if (root != nullptr) root->traverse();
+template<typename T>
+void BTree<T>::remove(T k) {
+    if (!root) {
+        cout << "Arvore Vazia\n";
+        return;
     }
-
-
-    BTreeNode<T> *search(T k) {
-        return (root == nullptr) ? nullptr : root->search(k);
+    root->remove(k);
+    if (root->n == 0) {
+        BTreeNode<T> *tmp = root;
+        if (root->leaf)
+            root = nullptr;
+        else
+            root = root->C[0];
+        delete tmp;
     }
-
-    void insert(T k) {
-
-        if (root == nullptr) {
-
-            this->root = new BTreeNode<T>(t, true);
-            root->keys[0] = k;
-            root->n = 1;
-        } else {
-
-            if (root->n == 2 * t - 1) {
-                auto *s = new BTreeNode<T>(t, false);
-                s->C[0] = root;
-                s->splitChild(0, root);
-                int i = 0;
-                if (s->keys[0] < k)
-                    i++;
-                s->C[i]->insertNonFull(k);
-                root = s;
-            } else
-                root->insertNonFull(k);
-        }
-    }
-
-    void remove(T k) {
-        if (!root) {
-            cout << "The tree is empty\n";
-            return;
-        }
-        root->remove(k);
-        if (root->n == 0) {
-            BTreeNode<T> *tmp = root;
-            if (root->leaf)
-                root = nullptr;
-            else
-                root = root->C[0];
-            delete tmp;
-        }
-    }
-};
+}
 
 
 //int main() {

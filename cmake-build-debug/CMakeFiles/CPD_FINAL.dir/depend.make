@@ -7,7 +7,9 @@ CMakeFiles/CPD_FINAL.dir/BTree.cpp.o: ../BTree.h
 CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o: ../HashMap.cpp
 CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o: ../HashMap.h
 
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../HashMap.h
 CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../Helper.cpp
+CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../WordAvg.h
 CMakeFiles/CPD_FINAL.dir/Helper.cpp.o: ../WordInfo.cpp
 
 CMakeFiles/CPD_FINAL.dir/Trie.cpp.o: ../HashMap.cpp
@@ -20,11 +22,16 @@ CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.o: ../WordAvg.h
 
 CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o: ../WordInfo.cpp
 
+<<<<<<< Updated upstream
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../BTree.cpp
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../BTree.h
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../HashMap.cpp
+=======
+CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../BTree.h
+>>>>>>> Stashed changes
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../HashMap.h
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../Helper.cpp
+CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../WordAvg.h
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../WordInfo.cpp
 CMakeFiles/CPD_FINAL.dir/main.cpp.o: ../main.cpp
 
