@@ -21,7 +21,7 @@ void WordAvg::generateParcialSun() {
     for (int i = 0; i < this->grades.size(); i++) {
         p += this->grades[i];
     }
-    this->partialSun = partialSun;
+    this->partialSun = p;
 }
 
 bool WordAvg::operator<(const WordAvg &rhs) const {

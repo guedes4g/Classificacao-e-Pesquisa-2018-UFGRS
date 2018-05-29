@@ -52,7 +52,27 @@ public:
                 }
             }
         }
+
+        for (int i = 0; i < map.sizeofMap(); i++) {
+            for (auto &wordavg : map.arr[i]) {
+                wordavg.value->generateAvg();
+            }
+        }
+
+        return map;
     };
+
+    static void generateTrie(vector<WordInfo *> &vec) {
+
+        auto * trie = new Trie<WordInfo *>();
+        for (WordInfo *info : vec) {
+            for (string w : info->getWords()) {
+                trie->insert(w, info);
+            }
+        }
+
+    }
+
 };
 
 

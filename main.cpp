@@ -10,9 +10,17 @@
 
 using namespace std;
 
+
+
+int inputAvg( HashMap<string, WordAvg> &map);
+
 void strategyOne(){
     vector<WordInfo* > raw =  Helper::readFile();
-    HashMap<string, WordAvg> map = Helper::generateHashWordAvg(raw);
+    HashMap<string, WordAvg* > map = Helper::generateHashWordAvg(raw);
+    WordAvg * a = map.get("chortles");
+
+    Helper::generateTrie(raw);
+    //inputAvg(map);
 }
 
 int main(){
@@ -21,6 +29,29 @@ int main(){
     return 0;
 }
 
+int inputAvg( HashMap<string, WordAvg> &map){
+    string str;
+    cout << "Escreve uma frase para ser avaliada" << endl;
+    cin >> str;
+
+    vector<string> v;
+    istringstream iss (str);
+    string s;
+    while ( getline( iss, s, ' ' ) ) {
+        v.push_back(s);
+    }
+    int sum = 0, i = 0;
+    for(const string &word: v){
+        if(map.contains(word)){
+            sum += map.get(word).getAvg();
+            i++;
+        }
+    }
+
+    if(i){
+        cout << "Média: " << (sum/i)<< endl;
+    }
+}
 
 //void debugHash(){
 //    printf("Hello from TensorFlow C library version %s\n", TF_Version());
