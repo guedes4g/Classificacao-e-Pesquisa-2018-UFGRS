@@ -11,6 +11,7 @@
 #include "WordInfo.cpp"
 #include "WordAvg.h"
 #include "HashMap.h"
+#include "Trie.h"
 
 using namespace std;
 
@@ -42,7 +43,7 @@ public:
         return output;
     }
 
-        HashMap<string, WordAvg> static generateHashWordAvg(vector<WordInfo*> &vec){
+    static HashMap<string, WordAvg* > generateHashWordAvg(vector<WordInfo*> &vec){
         auto * map = new HashMap<string, WordAvg *>(335941);
         for(WordInfo * info: vec){
             for(string word : info->getWords()){
@@ -53,13 +54,13 @@ public:
             }
         }
 
-        for (int i = 0; i < map.sizeofMap(); i++) {
-            for (auto &wordavg : map.arr[i]) {
+        for (int i = 0; i < map->sizeofMap(); i++) {
+            for (auto &wordavg : map->arr[i]) {
                 wordavg.value->generateAvg();
             }
         }
 
-        return map;
+        return * map;
     };
 
     static void generateTrie(vector<WordInfo *> &vec) {

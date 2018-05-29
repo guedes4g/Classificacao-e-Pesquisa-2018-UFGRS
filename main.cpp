@@ -12,15 +12,16 @@ using namespace std;
 
 
 
-int inputAvg( HashMap<string, WordAvg> &map);
+int inputAvg( HashMap<string, WordAvg* > &map);
 
 void strategyOne(){
     vector<WordInfo* > raw =  Helper::readFile();
     HashMap<string, WordAvg* > map = Helper::generateHashWordAvg(raw);
-    WordAvg * a = map.get("chortles");
-
+    WordAvg * a = map.get("is");
+    float avg =  a->generateAvg();
+//    cout << avg << endl;
     Helper::generateTrie(raw);
-    //inputAvg(map);
+    inputAvg(map);
 }
 
 int main(){
@@ -29,7 +30,7 @@ int main(){
     return 0;
 }
 
-int inputAvg( HashMap<string, WordAvg> &map){
+int inputAvg( HashMap<string, WordAvg* > &map){
     string str;
     cout << "Escreve uma frase para ser avaliada" << endl;
     cin >> str;
@@ -43,7 +44,7 @@ int inputAvg( HashMap<string, WordAvg> &map){
     int sum = 0, i = 0;
     for(const string &word: v){
         if(map.contains(word)){
-            sum += map.get(word).getAvg();
+            sum += map.get(word)->getAvg();
             i++;
         }
     }

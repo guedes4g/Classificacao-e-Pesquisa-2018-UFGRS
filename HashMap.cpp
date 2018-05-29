@@ -56,7 +56,6 @@ V HashMap<K, V>::deleteNode(K key) {
             return val;
         }
     }
-    return NULL;
 }
 
 template<typename K, typename V>
@@ -67,7 +66,6 @@ V HashMap<K, V>::get(K key) {
             return arr[hashIndex].at(i).value;
         }
     }
-    return NULL;
 }
 
 template<typename K, typename V>

@@ -21,7 +21,27 @@ void WordAvg::generateParcialSun() {
     for (int i = 0; i < this->grades.size(); i++) {
         p += this->grades[i];
     }
-    this->partialSun = p;
+    this->setPartialSum(p);
+}
+
+void WordAvg::setWord(const string &word) {
+    WordAvg::word = word;
+}
+
+void WordAvg::setGrades(const vector<int> &grades) {
+    WordAvg::grades = grades;
+}
+
+void WordAvg::setCount(int count) {
+    WordAvg::count = count;
+}
+
+void WordAvg::setPartialSum(float partialSum) {
+    WordAvg::partialSum = partialSum;
+}
+
+void WordAvg::setAvg(float avg) {
+    WordAvg::avg = avg;
 }
 
 bool WordAvg::operator<(const WordAvg &rhs) const {
@@ -53,10 +73,10 @@ bool WordAvg::operator!=(const WordAvg &rhs) const {
 
 float WordAvg::generateAvg() {
     this->generateParcialSun();
-    this->avg = (this->partialSun / this->count);
-    return this->avg;
+    this->setAvg(this->partialSum / this->count);
+    return this->getAvg();
 }
 
 float WordAvg::getAvg() {
-    return this->avg;
+    return  WordAvg::avg;
 }
