@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/CPD_FINAL.dir/main.cpp.o CMakeFiles/CPD_FINAL.dir/Trie.cpp.o CMakeFiles/CPD_FINAL.dir/HashMap.cpp.o CMakeFiles/CPD_FINAL.dir/BTree.cpp.o CMakeFiles/CPD_FINAL.dir/Helper.cpp.o CMakeFiles/CPD_FINAL.dir/WordInfo.cpp.o CMakeFiles/CPD_FINAL.dir/WordAvg.cpp.o  -o CPD_FINAL -ltensorflow 
