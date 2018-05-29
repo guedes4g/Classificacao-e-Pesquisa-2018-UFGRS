@@ -17,6 +17,7 @@ public:
     float partialSum = 0;
     float avg = 0;
 
+    WordAvg();
     explicit WordAvg(string &w, int grade);
 
     void add(int grade);

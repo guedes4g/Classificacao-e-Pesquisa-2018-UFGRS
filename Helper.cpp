@@ -43,24 +43,19 @@ public:
         return output;
     }
 
-    static HashMap<string, WordAvg* > generateHashWordAvg(vector<WordInfo*> &vec){
-        auto * map = new HashMap<string, WordAvg *>(335941);
+    static void generateHashWordAvg(vector<WordInfo*> &vec, HashMap<string, WordAvg *> &map ){
         for(WordInfo * info: vec){
             for(string word : info->getWords()){
-                if(!map->insertNode(word, new WordAvg(word, info->getSentiment()))){
-                    WordAvg * p  = map->get(word);
-                    p->add(info->getSentiment());
+                if(!map.insertNode(word, new WordAvg(word, info->getSentiment()) )){
+                    map.get(word)->add(info->getSentiment());
                 }
             }
         }
-
-        for (int i = 0; i < map->sizeofMap(); i++) {
-            for (auto &wordavg : map->arr[i]) {
+        for (int i = 0; i < map.getCapacity(); i++) {
+            for (auto &wordavg : map.arr[i]) {
                 wordavg.value->generateAvg();
             }
         }
-
-        return * map;
     };
 
     static void generateTrie(vector<WordInfo *> &vec) {

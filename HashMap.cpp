@@ -63,6 +63,7 @@ V HashMap<K, V>::get(K key) {
     unsigned int hashIndex = hashCode( key );
     for(int i = 0; i < arr[hashIndex].size(); i++){
         if( arr[hashIndex].at(i).key == key){
+            arr[hashIndex].at(i).value;
             return arr[hashIndex].at(i).value;
         }
     }

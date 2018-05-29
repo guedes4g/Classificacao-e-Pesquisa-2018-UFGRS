@@ -1,6 +1,8 @@
 #include <iostream>
 #include <tensorflow/c/c_api.h>
 #include <vector>
+#include <iostream>
+
 
 #include "Helper.cpp"
 #include "BTree.cpp"
@@ -12,15 +14,14 @@ using namespace std;
 
 
 
-int inputAvg( HashMap<string, WordAvg* > &map);
+int inputAvg( HashMap<string, WordAvg* >  &map);
 
 void strategyOne(){
     vector<WordInfo* > raw =  Helper::readFile();
-    HashMap<string, WordAvg* > map = Helper::generateHashWordAvg(raw);
-    WordAvg * a = map.get("is");
-    float avg =  a->generateAvg();
-//    cout << avg << endl;
-    Helper::generateTrie(raw);
+    HashMap<string, WordAvg* > map(335941);
+    Helper::generateHashWordAvg(raw, map);
+
+   // Helper::generateTrie(raw);
     inputAvg(map);
 }
 
@@ -32,16 +33,16 @@ int main(){
 
 int inputAvg( HashMap<string, WordAvg* > &map){
     string str;
-    cout << "Escreve uma frase para ser avaliada" << endl;
-    cin >> str;
-
+    cout << "Escreve uma frase para ser avaliada:" << endl;
+    getline( cin, str );
     vector<string> v;
     istringstream iss (str);
     string s;
     while ( getline( iss, s, ' ' ) ) {
+        cout << s << endl;
         v.push_back(s);
     }
-    int sum = 0, i = 0;
+    float sum = 0, i = 0;
     for(const string &word: v){
         if(map.contains(word)){
             sum += map.get(word)->getAvg();
