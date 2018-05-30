@@ -12,15 +12,17 @@ using namespace std;
 class WordAvg {
 public:
     string word;
-    vector<int> grades;
+    vector<int> grades; //sentiment
+    vector<string> phrases;
+    vector<int> phrasesIds;
     int count = 0;
     float partialSum = 0;
     float avg = 0;
 
     WordAvg();
-    explicit WordAvg(string &w, int grade);
+    explicit WordAvg(string &w, int grade, int phraseId, string phrase);
 
-    void add(int grade);
+    void add(int grade, int phraseId , string phrase);
 
     void generateParcialSun();
 

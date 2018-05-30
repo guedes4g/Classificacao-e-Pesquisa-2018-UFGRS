@@ -5,6 +5,9 @@
 #ifndef CPD_FINAL_TRIE_H
 
 #include <string>
+#include <vector>
+#include <utility>      // std::pair
+#include <typeinfo>
 
 using namespace std;
 #define CPD_FINAL_TRIE_H
@@ -14,7 +17,7 @@ class TrieNode {
 public:
     char k{};
     vector<struct TrieNode *> children;
-    T info;
+    vector<T> info;
     bool isEndOfWord{};
 
     explicit TrieNode(char k, bool isEndOfWord);
@@ -36,14 +39,15 @@ public:
 
     void override(string key, T v);
 
-    T search(string key);
+    T searchExact(string key);
+    vector<pair<string,vector<T>>> searchStartingWith(string key);
 
     bool has(string key);
 
 private:
     int search(struct TrieNode<T> *cur, char key);
-
-    TrieNode<T> *insertNode(struct TrieNode<T> *cur, char k, bool terminal, T *v);
+    TrieNode<T> *insertNode(struct TrieNode<T> *cur, char k, bool terminal);
+    vector<pair<string,vector<T>>>  getList(TrieNode<T> &node, vector<pair<string,vector<T>>> &vec, string aux);
 };
 
 
@@ -54,7 +58,7 @@ TrieNode<T>::TrieNode(char k, bool isEndOfWord, T *v) {
     this->k = k;
     this->children = *new vector<struct TrieNode *>;
     this->isEndOfWord = isEndOfWord;
-    this->info = *v;
+    this->info.push_back(*v);
 }
 
 template<typename T>
@@ -73,16 +77,17 @@ void Trie<T>::insert(string key, T v) {
     for (int i = 0; i < key.size(); i++) {
         auto index = this->search(cur, key[i]);
         if (index == -1) {
-            cur = this->insertNode(cur, key[i], false, &v);
+            cur = this->insertNode(cur, key[i], false);
         } else {
             cur = cur->children[index];
         }
     }
+    cur->info.push_back(v);
     cur->isEndOfWord = true;
 }
 
 template<typename T>
-T Trie<T>::search(string key) {
+T Trie<T>::searchExact(string key) {
     struct TrieNode<T> *cur = this->root;
 
     for (int i = 0; i < key.size(); i++) {
@@ -94,6 +99,40 @@ T Trie<T>::search(string key) {
         }
     }
     return cur->info;
+}
+
+template<typename T>
+vector<pair<string, vector<T> >> Trie<T>::searchStartingWith(string key) {
+    struct TrieNode<T> *cur = this->root;
+
+    for (int i = 0; i < key.size(); i++) {
+        auto index = this->search(cur, key[i]);
+        if (index == -1) {
+            return vector<pair<string, vector<T> >>();
+        } else {
+            cur = cur->children[index];
+        }
+    }
+
+    vector<pair<string,vector<T>>> vec;
+    return this->getList(*cur, vec, "" );
+}
+
+template<typename T>
+vector<pair<string,vector<T>>>  Trie<T>::getList(TrieNode<T> &node, vector<pair<string,vector<T>>> &vec, string aux) {
+
+    if(node.isEndOfWord)
+    {
+        vec.push_back( make_pair(aux+node.k, node.info) );
+
+    }
+    unsigned long size =  node.children.size();
+    for(int i = 0; i < node.children.size(); i++){
+        Trie<T>::getList(*node.children[i], vec, aux+node.k);
+    }
+
+
+    return ( vec );
 }
 
 template<typename T>
@@ -112,8 +151,8 @@ bool Trie<T>::has(string key) {
 }
 
 template<typename T>
-TrieNode<T> *Trie<T>::insertNode(TrieNode<T> *cur, char k, bool terminal, T *v) {
-    auto *nw = new TrieNode<T>(k, terminal, v);
+TrieNode<T> *Trie<T>::insertNode(TrieNode<T> *cur, char k, bool terminal) {
+    auto *nw = new TrieNode<T>(k, terminal);
     cur->children.push_back(nw);
     return nw;
 }
@@ -135,7 +174,7 @@ void Trie<T>::override(string key, T v) {
     for (int i = 0; i < key.size(); i++) {
         auto index = this->search(cur, key[i]);
         if (index == -1) {
-            cur = this->insertNode(cur, key[i], false, &v);
+            cur = this->insertNode(cur, key[i], false);
         } else {
             cur = cur->children[index];
         }

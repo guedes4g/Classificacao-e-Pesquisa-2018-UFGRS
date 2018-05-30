@@ -20,9 +20,16 @@ void strategyOne(){
     vector<WordInfo* > raw =  Helper::readFile();
     HashMap<string, WordAvg* > map(335941);
     Helper::generateHashWordAvg(raw, map);
+    //inputAvg(map);
 
-   // Helper::generateTrie(raw);
-    inputAvg(map);
+    Trie<WordInfo *> trie = Helper::generateTrie(raw);
+    vector <pair<string, vector<WordInfo*>>> v = trie.searchStartingWith("i");
+//    for(auto aux: v){
+//        cout << aux.first << ",  " << endl;
+//        for(int j = 0; aux.second.size(); j++){
+//            cout << aux.second[j]->getPhraseId() << endl;
+//        }
+//    }
 }
 
 int main(){

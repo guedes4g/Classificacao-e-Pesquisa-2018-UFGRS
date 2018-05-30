@@ -7,6 +7,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <utility>      // std::pair
 
 #include "WordInfo.cpp"
 #include "WordAvg.h"
@@ -46,8 +47,8 @@ public:
     static void generateHashWordAvg(vector<WordInfo*> &vec, HashMap<string, WordAvg *> &map ){
         for(WordInfo * info: vec){
             for(string word : info->getWords()){
-                if(!map.insertNode(word, new WordAvg(word, info->getSentiment()) )){
-                    map.get(word)->add(info->getSentiment());
+                if(!map.insertNode(word, new WordAvg(word, info->getSentiment(), info->getPhraseId(), info->getPhrase()) )){
+                    map.get(word)->add(info->getSentiment(), info->getPhraseId(), info->getPhrase());
                 }
             }
         }
@@ -58,7 +59,7 @@ public:
         }
     };
 
-    static void generateTrie(vector<WordInfo *> &vec) {
+    static Trie<WordInfo *> generateTrie(vector<WordInfo *> &vec) {
 
         auto * trie = new Trie<WordInfo *>();
         for (WordInfo *info : vec) {
@@ -67,6 +68,8 @@ public:
             }
         }
 
+
+        return *trie;
     }
 
 };
