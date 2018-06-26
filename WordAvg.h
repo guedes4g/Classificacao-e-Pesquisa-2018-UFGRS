@@ -12,6 +12,7 @@ using namespace std;
 class WordAvg {
 public:
     string word;
+    vector<int> wordPosition;
     vector<int> grades; //sentiment
     vector<string> phrases;
     vector<int> phrasesIds;
@@ -20,9 +21,9 @@ public:
     float avg = 0;
 
     WordAvg();
-    explicit WordAvg(string &w, int grade, int phraseId, string phrase);
+    explicit WordAvg(string &w, int wordpos, int grade, int phraseId, string phrase);
 
-    void add(int grade, int phraseId , string phrase);
+    void add(int wordpos, int grade, int phraseId , string phrase);
 
     void generateParcialSun();
 

@@ -7,6 +7,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <stdlib.h>
 #include <utility>      // std::pair
 
 #include "WordInfo.cpp"
@@ -45,10 +46,12 @@ public:
     }
 
     static void generateHashWordAvg(vector<WordInfo*> &vec, HashMap<string, WordAvg *> &map ){
-        for(WordInfo * info: vec){
-            for(string word : info->getWords()){
-                if(!map.insertNode(word, new WordAvg(word, info->getSentiment(), info->getPhraseId(), info->getPhrase()) )){
-                    map.get(word)->add(info->getSentiment(), info->getPhraseId(), info->getPhrase());
+          for(WordInfo * info: vec){
+            //for(string word : info->getWords()){
+            for(int i=0; i<info->getWords().size(); i++){
+                    vector<string> aux=info->getWords();
+                if(!map.insertNode(aux[i], new WordAvg(aux[i], i+1, info->getSentiment(), info->getPhraseId(), info->getPhrase()) )){
+                    map.get(aux[i])->add(i+1, info->getSentiment(), info->getPhraseId(), info->getPhrase());
                 }
             }
         }

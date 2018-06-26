@@ -4,17 +4,20 @@
 
 #include "WordAvg.h"
 
-WordAvg::WordAvg(string &w, int grade, int phraseId , string phrase) {
+WordAvg::WordAvg(string &w, int wordPos, int grade, int phraseId , string phrase) {
+    this->wordPosition= *new vector<int>();
     this->grades = *new vector<int>();
     this->phrases = *new vector<string>();
     this->word = w;
+    this->wordPosition.push_back(wordPos);
     this->phrases.push_back(phrase);
     this->phrasesIds.push_back(phraseId);
     this->grades.push_back(grade);
     this->count++;
 }
 
-void WordAvg::add(int grade, int phraseId , string phrase) {
+void WordAvg::add(int wordpos, int grade, int phraseId , string phrase) {
+    this->wordPosition.push_back(wordpos);
     this->grades.push_back(grade);
     this->phrases.push_back(phrase);
     this->phrasesIds.push_back(phraseId);
