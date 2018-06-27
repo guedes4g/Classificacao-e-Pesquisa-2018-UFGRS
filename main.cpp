@@ -19,18 +19,18 @@ using namespace std::__cxx11;
 
 
 
-int inputAvg( HashMap<string, WordAvg* >  &map);
-void inputListCommentsByWords( HashMap<string, WordAvg* >  &map);
-void inputPrefixSearch( HashMap<string, WordAvg* >  &map, vector<WordInfo* > raw);
-void inputFile( HashMap<string, WordAvg* > &map, string filePath);
+void inputAvg( HashMap<string, WordAvg* >  &mapa, bool modeloAntigo);
+void inputListCommentsByWords( HashMap<string, WordAvg* >  &mapa, bool modeloAntigo);
+void inputPrefixSearch( HashMap<string, WordAvg* >  &mapa, Trie<WordInfo *> trie, bool modeloAntigo);
+void inputFile( HashMap<string, WordAvg* > &mapa, string filePath, bool modeloAntigo);
 
 
-HashMap<string, WordAvg* > strategyOne(vector<WordInfo* > raw){
+HashMap<string, WordAvg* > strategyOne(vector<WordInfo* > raw, bool modeloAntigo=false){
     //vector<WordInfo* > raw =  Helper::readFile();
-    HashMap<string, WordAvg* > map(335941);
-    Helper::generateHashWordAvg(raw, map);
-    //return(map);
-    //inputAvg(map);
+    HashMap<string, WordAvg* > mapa(335941);
+    Helper::generateHashWordAvg(raw, mapa, modeloAntigo);
+    //return(mapa);
+    //inputAvg(mapa);
 
     //Trie<WordInfo *> trie = Helper::generateTrie(raw);
     //vector <pair<string, vector<WordInfo*>>> v = trie.searchStartingWith("i");
@@ -40,13 +40,18 @@ HashMap<string, WordAvg* > strategyOne(vector<WordInfo* > raw){
             //cout << aux.second[j]->getPhraseId() << endl;
         //}
     //}
-    return(map);
+    return(mapa);
 }
 
 int main(int argc, char **argv){
     if(argc<3){
+        bool flagModeloAntigo=false;
         vector<WordInfo* > raw =  Helper::readFile();
-        HashMap<string, WordAvg* > mapa=strategyOne(raw);
+        Trie<WordInfo *> trie = Helper::generateTrie(raw);
+        HashMap<string, WordAvg* > mapaRefinado=strategyOne(raw, flagModeloAntigo);
+        HashMap<string, WordAvg* > mapaAntigo=strategyOne(raw, !flagModeloAntigo);
+        HashMap<string, WordAvg* > *mapa = flagModeloAntigo ? &mapaAntigo : &mapaRefinado;
+
         if(argc==1){
             char flag={0};
             do
@@ -55,6 +60,13 @@ int main(int argc, char **argv){
                 cout << "\t\t\t2 - Listar ocorrencias" << endl;
                 cout << "\t\t\t3 - Listar comentarios por palavra" << endl;
                 cout << "\t\t\t4 - Busca por prefixo" << endl;
+                if(flagModeloAntigo)
+                {
+                    cout << "\t\t\t5 - Carregar modelo refinado" << endl;
+                }else
+                {
+                    cout << "\t\t\t5 - Carregar modelo inicial" << endl;
+                }
                 cout << "\t\t\tq - Encerrar" << endl;
                 cout << "Selecione uma opcao valida: ";
                 string input="";
@@ -64,13 +76,13 @@ int main(int argc, char **argv){
                     //cout << (int)flag << endl;
                     switch(flag)
                     {
-                        case '1': inputAvg(mapa);
+                        case '1': inputAvg(*mapa, flagModeloAntigo);
                         break;
                         case '2':;
 //                            int tamLista=3;
 //                            int lista[3]={0};
-//                            for (int i = 0; i < mapa.getCapacity(); i++) {
-//                                for (auto &wordavg : mapa.arr[i]) {
+//                            for (int i = 0; i < mapaa.getCapacity(); i++) {
+//                                for (auto &wordavg : mapaa.arr[i]) {
 //                                    if(lista[0]<=wordavg.value->count)
 //                                    {
 //                                        lista[0]=wordavg.value->count;
@@ -81,17 +93,24 @@ int main(int argc, char **argv){
 //                                }
 //                            }
                         break;
-                        case '3': inputListCommentsByWords(mapa);
+                        case '3': inputListCommentsByWords(*mapa, flagModeloAntigo);
                         break;
-                        case '4':inputPrefixSearch(mapa, raw);
+                        case '4': inputPrefixSearch(*mapa, trie, flagModeloAntigo);
                         break;
+                        case '5':flagModeloAntigo=!flagModeloAntigo;
+                            system("cls");
+                            cout <<"Carregando modelo...";
+                            mapa=flagModeloAntigo ? &mapaAntigo : &mapaRefinado;
+                            //mapa=strategyOne(raw, flagModeloAntigo);
+                            system("cls");
 
+                        break;
                     }
                 }
             }while(tolower(flag)!='q');
         }
         else{
-            inputFile(mapa, ((string)argv[1]));
+            inputFile(*mapa, ((string)argv[1]), flagModeloAntigo);
         }
     }
     else
@@ -101,11 +120,18 @@ int main(int argc, char **argv){
     return 0;
 }
 
-int inputAvg( HashMap<string, WordAvg* > &map){
+void inputAvg( HashMap<string, WordAvg* > &mapa, bool modeloAntigo){
     string str;
     do{
         cout << "Escreva uma frase para ser avaliada ou aperte Enter para encerrar:" << endl;
         getline( cin, str );
+        if(!modeloAntigo)
+        {
+            for(char &temp : str)
+            {
+                temp=tolower(temp);
+            }
+        }
         vector<string> v;
         istringstream iss (str);
         string s;
@@ -115,14 +141,14 @@ int inputAvg( HashMap<string, WordAvg* > &map){
         }
         float sum = 0, i = 0;
         for(const string &word: v){
-            if(map.contains(word)){
-                sum += map.get(word)->getAvg();
+            if(mapa.contains(word)){
+                sum += mapa.get(word)->getAvg();
                 i++;
             }
         }
         if(i){
             float avg=(sum/i);
-            cout << "Média: " << avg << endl;
+            cout << "Media: " << avg << endl;
             if(avg>2)
             {
                 cout << "Sentimento positivo." << endl;
@@ -140,12 +166,19 @@ int inputAvg( HashMap<string, WordAvg* > &map){
 
 
 
-void inputListCommentsByWords( HashMap<string, WordAvg* >  &mapa)
+void inputListCommentsByWords( HashMap<string, WordAvg* >  &mapaa, bool modeloAntigo)
 {
     string str;
     do{
         cout << "\nEscreva uma palavra para ser avaliada, use + ou - para separar por polaridade, \nou aperte Enter para encerrar:" << endl;
         getline( cin, str );
+        if(!modeloAntigo)
+        {
+            for(char &temp : str)
+            {
+                temp=tolower(temp);
+            }
+        }
         vector<string> v;
         istringstream iss (str);
         string s;
@@ -165,34 +198,34 @@ void inputListCommentsByWords( HashMap<string, WordAvg* >  &mapa)
                 flagPolaridade=true;
             }
         }
-        if(v.size()>0 && mapa.contains(v[0])){
-                for(int i=0 ; i<mapa.get(v[0])->count ; i++)
+        if(v.size()>0 && mapaa.contains(v[0])){
+                for(int i=0 ; i<mapaa.get(v[0])->count ; i++)
                 {
                     if(flagPolaridade)
                     {
                         if(polaridade)
                         {
-                            if(mapa.get(v[0])->grades[i]>2)
+                            if(mapaa.get(v[0])->grades[i]>2)
                             {
-                                cout << "Id Frase: " << mapa.get(v[0])->phrasesIds[i];
-                                cout << " Nro Palavra  " << mapa.get(v[0])->wordPosition[i];
-                                cout << " Sentimento: " << mapa.get(v[0])->grades[i] << endl;
+                                cout << "Id Frase: " << mapaa.get(v[0])->phrasesIds[i];
+                                cout << " Nro Palavra  " << mapaa.get(v[0])->wordPosition[i];
+                                cout << " Sentimento: " << mapaa.get(v[0])->grades[i] << endl;
                             }
                         }else
                         {
-                            if(mapa.get(v[0])->grades[i]<2)
+                            if(mapaa.get(v[0])->grades[i]<2)
                             {
-                                cout << "Id Frase: " << mapa.get(v[0])->phrasesIds[i];
-                                cout << " Nro Palavra  " << mapa.get(v[0])->wordPosition[i];
-                                cout << " Sentimento: " << mapa.get(v[0])->grades[i] << endl;
+                                cout << "Id Frase: " << mapaa.get(v[0])->phrasesIds[i];
+                                cout << " Nro Palavra  " << mapaa.get(v[0])->wordPosition[i];
+                                cout << " Sentimento: " << mapaa.get(v[0])->grades[i] << endl;
                             }
                         }
                     }
                     else
                     {
-                        cout << "Id Frase: " << mapa.get(v[0])->phrasesIds[i];
-                        cout << " Nro Palavra  " << mapa.get(v[0])->wordPosition[i];
-                        cout << " Sentimento: " << mapa.get(v[0])->grades[i] << endl;
+                        cout << "Id Frase: " << mapaa.get(v[0])->phrasesIds[i];
+                        cout << " Nro Palavra  " << mapaa.get(v[0])->wordPosition[i];
+                        cout << " Sentimento: " << mapaa.get(v[0])->grades[i] << endl;
                     }
                 }
             }
@@ -200,12 +233,19 @@ void inputListCommentsByWords( HashMap<string, WordAvg* >  &mapa)
     while(str.length()>0);
 }
 
-void inputPrefixSearch(HashMap<string, WordAvg*>& map, vector<WordInfo* >raw)
+void inputPrefixSearch(HashMap<string, WordAvg*>& mapa, Trie<WordInfo *> trie, bool modeloAntigo)
 {
     string str;
     do{
         cout << "Insira o prefixo de interesse ou aperte Enter para encerrar:" << endl;
         getline( cin, str );
+        //if(!modeloAntigo)
+        {
+            for(char &temp : str)
+            {
+                temp=tolower(temp);
+            }
+        }
         vector<string> v;
         istringstream iss (str);
         string s;
@@ -215,7 +255,6 @@ void inputPrefixSearch(HashMap<string, WordAvg*>& map, vector<WordInfo* >raw)
         }
         if(v.size()>0)
         {
-            Trie<WordInfo *> trie = Helper::generateTrie(raw);
             vector <pair<string, vector<WordInfo*>>> vec = trie.searchStartingWith(v[0]);
             cout << "Palavras que iniciam com: " << v[0] << endl;
             for(auto aux: vec){
@@ -226,23 +265,23 @@ void inputPrefixSearch(HashMap<string, WordAvg*>& map, vector<WordInfo* >raw)
                     //cout << aux.first[j] << endl;
                 //}
             }
+            trie.~Trie();
         }
 
     }
     while(str.length()>0);
 }
 
-void inputFile( HashMap<string, WordAvg* > &map, string filePath){
+void inputFile( HashMap<string, WordAvg* > &mapa, string filePath, bool modeloAntigo){
 
         ifstream in(filePath);
-        ofstream out(filePath.insert(filePath.length()-4 , "_out") );
-        cout << filePath << "  file"<< endl;
-        vector<WordInfo*>  output = *new vector<WordInfo *> ;
-
         if(!in) {
             cout << "\nerror: { Cannot open input files } \n";
             exit(1);
         }
+        ofstream out(filePath.insert(filePath.length()-4 , "_out") );
+        cout << filePath << "  file"<< endl;
+        vector<WordInfo*>  output = *new vector<WordInfo *> ;
         string line;
         string token;
         //string pices [4];
@@ -250,6 +289,13 @@ void inputFile( HashMap<string, WordAvg* > &map, string filePath){
         //std::string::size_type sz;
         while(getline(in, line))
         {
+            if(!modeloAntigo)
+            {
+                for(char &temp : line)
+                {
+                    temp=tolower(temp);
+                }
+            }
             vector<string> v;
             istringstream iss (line);
             string s;
@@ -259,14 +305,14 @@ void inputFile( HashMap<string, WordAvg* > &map, string filePath){
             }
             float sum = 0, i = 0;
             for(const string &word: v){
-                if(map.contains(word)){
-                    sum += map.get(word)->getAvg();
+                if(mapa.contains(word)){
+                    sum += mapa.get(word)->getAvg();
                     i++;
                 }
             }
             if(i){
                 float avg=(sum/i);
-                cout << "Média: " << avg << endl;
+                //cout << "Media: " << avg << endl;
                 out<<avg<<'\t'<<line<<endl;
             }
         }
@@ -277,22 +323,22 @@ void inputFile( HashMap<string, WordAvg* > &map, string filePath){
 //void debugHash(){
 //    printf("Hello from TensorFlow C library version %s\n", TF_Version());
 //
-//    auto *map = new HashMap<string, unsigned int>(100);
+//    auto *mapa = new HashMap<string, unsigned int>(100);
 //    cout << "insert 1" << endl;
-//    map->insertNode("asa",3);    cout << "insert 2" << endl;
+//    mapa->insertNode("asa",3);    cout << "insert 2" << endl;
 //
-//    map->insertNode("aaa",3);    cout << "insert 3" << endl;
+//    mapa->insertNode("aaa",3);    cout << "insert 3" << endl;
 //
-//    map->insertNode("aba",3);    cout << "insert 4" << endl;
-//    map->insertNode("aba",3);    cout << "insert 4" << endl;
+//    mapa->insertNode("aba",3);    cout << "insert 4" << endl;
+//    mapa->insertNode("aba",3);    cout << "insert 4" << endl;
 //
-//    map->set("asa",4);
-//    cout << "after set "<< map->get("asa") << endl;
-//    cout << map->get("aaa") << endl;
-//    map->deleteNode("asa")  ;
+//    mapa->set("asa",4);
+//    cout << "after set "<< mapa->get("asa") << endl;
+//    cout << mapa->get("aaa") << endl;
+//    mapa->deleteNode("asa")  ;
 //    cout << " -- -- -- --" << endl;
-//    map->deleteNode("asa") ;
-//    cout << map->get("asa") << endl;
+//    mapa->deleteNode("asa") ;
+//    cout << mapa->get("asa") << endl;
 //
-//    cout << map->sizeofMap() << endl;
+//    cout << mapa->sizeofMap() << endl;
 //}

@@ -74,7 +74,7 @@ TrieNode<T>::TrieNode(char k, bool isEndOfWord) {
 template<typename T>
 void Trie<T>::insert(string key, T v) {
     struct TrieNode<T> *cur = this->root;
-    for (int i = 0; i < key.size(); i++) {
+    for (unsigned int i = 0; i < key.size(); i++) {
         auto index = this->search(cur, key[i]);
         if (index == -1) {
             cur = this->insertNode(cur, key[i], false);
@@ -105,7 +105,7 @@ template<typename T>
 vector<pair<string, vector<T> >> Trie<T>::searchStartingWith(string key) {
     struct TrieNode<T> *cur = this->root;
 
-    for (int i = 0; i < key.size(); i++) {
+    for (unsigned int i = 0; i < key.size(); i++) {
         auto index = this->search(cur, key[i]);
         if (index == -1) {
             return vector<pair<string, vector<T> >>();
@@ -126,8 +126,8 @@ vector<pair<string,vector<T>>>  Trie<T>::getList(TrieNode<T> &node, vector<pair<
         vec.push_back( make_pair(aux+node.k, node.info) );
 
     }
-    unsigned long size =  node.children.size();
-    for(int i = 0; i < node.children.size(); i++){
+    //unsigned long size =  node.children.size();
+    for(unsigned long i = 0; i < node.children.size(); i++){
         Trie<T>::getList(*node.children[i], vec, aux+node.k);
     }
 
@@ -159,8 +159,8 @@ TrieNode<T> *Trie<T>::insertNode(TrieNode<T> *cur, char k, bool terminal) {
 
 template<typename T>
 int Trie<T>::search(TrieNode<T> *cur, char key) {
-    for (int i = 0; i < cur->children.size(); i++) {
-        if (cur->children[i]->k == key) {
+    for (unsigned int i = 0; i < cur->children.size(); i++) {
+        if (tolower(cur->children[i]->k) == tolower(key)) {
             return i;
         }
     }
