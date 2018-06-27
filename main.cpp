@@ -280,7 +280,7 @@ void inputFile( HashMap<string, WordAvg* > &mapa, string filePath, bool modeloAn
             exit(1);
         }
         ofstream out(filePath.insert(filePath.length()-4 , "_out") );
-        cout << filePath << "  file"<< endl;
+        //cout << filePath << "  file"<< endl;
         vector<WordInfo*>  output = *new vector<WordInfo *> ;
         string line;
         string token;
@@ -300,7 +300,7 @@ void inputFile( HashMap<string, WordAvg* > &mapa, string filePath, bool modeloAn
             istringstream iss (line);
             string s;
             while ( getline( iss, s, ' ' ) ) {
-                cout << s << endl;
+                //cout << s << endl;
                 v.push_back(s);
             }
             float sum = 0, i = 0;
