@@ -44,7 +44,9 @@ public:
         string pices [4];
         int i, lineNumber=1;
         std::string::size_type sz;
-        //std::getline(in, line);
+        if(fileExtension=="tsv"){
+            std::getline(in, line);
+        }
         while (std::getline(in, line)) {
             i=0;
             std::istringstream iss(line);
