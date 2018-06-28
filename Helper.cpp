@@ -44,7 +44,7 @@ public:
         string pices [4];
         int i, lineNumber=1;
         std::string::size_type sz;
-        std::getline(in, line);
+        //std::getline(in, line);
         while (std::getline(in, line)) {
             i=0;
             std::istringstream iss(line);
@@ -55,11 +55,15 @@ public:
                 }
                 output.push_back(new WordInfo (stoi(pices[0]), stoi(pices[1]), pices[2], stoi(pices[3]) ));
             }else{
-                while(std::getline(iss, token, ' ') && i < 2){
-                    pices[i] = token;
-                    i++;
-                }
-                output.push_back(new WordInfo (lineNumber, lineNumber, pices[1], stoi(pices[0]) ));
+                //while(std::getline(iss, token, ' ') && i < 1){
+                //    pices[i] = token;
+                //    i++;
+                //}
+                std::getline(iss, token, ' ');
+                pices[0] = token;
+                std::getline(iss, token);
+                output.push_back(new WordInfo (lineNumber, lineNumber, token, stoi(pices[0]) ));
+                lineNumber++;
             }
         }
         in.close();

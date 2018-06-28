@@ -159,6 +159,10 @@ void inputAvg( HashMap<string, WordAvg* > &mapa, bool modeloAntigo){
             }else
             cout << "Sentimento neutro." << endl;
         }
+        else
+        {
+            cout << "Media: " << "NaN" << endl;
+        }
     }
     while(str.length()>0);
 }
@@ -314,6 +318,9 @@ void inputFile( HashMap<string, WordAvg* > &mapa, string filePath, bool modeloAn
                 float avg=(sum/i);
                 //cout << "Media: " << avg << endl;
                 out<<avg<<'\t'<<line<<endl;
+            }
+            else{
+                out<<"NaN"<<'\t'<<line<<endl;
             }
         }
 
